@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SinemaDeviDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Actor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SurName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CoverImage" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MovieId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreationTime" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Communication">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="SendDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EnteranceLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="EnteranceDate" Type="datetime" Nullable="false" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExceptionLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="StackTrace" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="CreationTime" Type="datetime" Nullable="false" />
+    <Property Name="Explanation" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Movie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Year" Type="date" Nullable="false" />
+    <Property Name="Director" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Writer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ImdbScore" Type="float" Nullable="false" />
+    <Property Name="CoverImage" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Trailer" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovieCast">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MovieId" Type="int" Nullable="false" />
+    <Property Name="ActorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovieCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="MovieId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tv">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Year" Type="date" Nullable="false" />
+    <Property Name="Style" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Director" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Writer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ImdbScore" Type="float" Nullable="false" />
+    <Property Name="CoverImage" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Trailer" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TvCast">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TvSeriesId" Type="int" Nullable="false" />
+    <Property Name="ActorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserScoreForMovie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="MovieId" Type="int" Nullable="false" />
+    <Property Name="Score" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserScoreForTv">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="TvSeriesId" Type="int" Nullable="false" />
+    <Property Name="Score" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WatchListMovie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="MovieId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WatchListTv">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="TvSeriesId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Comment_Movie">
+    <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnteranceLog_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="EnteranceLog" Type="Self.EnteranceLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EnteranceLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExceptionLog_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ExceptionLog" Type="Self.ExceptionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExceptionLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieCast_Actor">
+    <End Role="Actor" Type="Self.Actor" Multiplicity="1" />
+    <End Role="MovieCast" Type="Self.MovieCast" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovieCast">
+        <PropertyRef Name="ActorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieCast_Movie">
+    <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
+    <End Role="MovieCast" Type="Self.MovieCast" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovieCast">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieCategory_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="MovieCategory" Type="Self.MovieCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovieCategory">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieCategory_Movie">
+    <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
+    <End Role="MovieCategory" Type="Self.MovieCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovieCategory">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TvSeries_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Tv" Type="Self.Tv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tv">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TvSeriesCast_Actor">
+    <End Role="Actor" Type="Self.Actor" Multiplicity="1" />
+    <End Role="TvCast" Type="Self.TvCast" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TvCast">
+        <PropertyRef Name="ActorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TvSeriesCast_TvSeries">
+    <End Role="Tv" Type="Self.Tv" Multiplicity="1" />
+    <End Role="TvCast" Type="Self.TvCast" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tv">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TvCast">
+        <PropertyRef Name="TvSeriesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserScoreForMovie_Movie">
+    <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
+    <End Role="UserScoreForMovie" Type="Self.UserScoreForMovie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserScoreForMovie">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserScoreForMovie_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserScoreForMovie" Type="Self.UserScoreForMovie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserScoreForMovie">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserScoreForTvSeries_TvSeries">
+    <End Role="Tv" Type="Self.Tv" Multiplicity="1" />
+    <End Role="UserScoreForTv" Type="Self.UserScoreForTv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tv">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserScoreForTv">
+        <PropertyRef Name="TvSeriesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserScoreForTvSeries_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserScoreForTv" Type="Self.UserScoreForTv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserScoreForTv">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchListMovie_Movie">
+    <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
+    <End Role="WatchListMovie" Type="Self.WatchListMovie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchListMovie">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchListMovie_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="WatchListMovie" Type="Self.WatchListMovie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchListMovie">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchListTvSeries_TvSeries">
+    <End Role="Tv" Type="Self.Tv" Multiplicity="1" />
+    <End Role="WatchListTv" Type="Self.WatchListTv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tv">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchListTv">
+        <PropertyRef Name="TvSeriesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WatchListTvSeries_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="WatchListTv" Type="Self.WatchListTv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WatchListTv">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SinemaDeviDBModelStoreContainer">
+    <EntitySet Name="Actor" EntityType="Self.Actor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Communication" EntityType="Self.Communication" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnteranceLog" EntityType="Self.EnteranceLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExceptionLog" EntityType="Self.ExceptionLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movie" EntityType="Self.Movie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieCast" EntityType="Self.MovieCast" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieCategory" EntityType="Self.MovieCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tv" EntityType="Self.Tv" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TvCast" EntityType="Self.TvCast" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserScoreForMovie" EntityType="Self.UserScoreForMovie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserScoreForTv" EntityType="Self.UserScoreForTv" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WatchListMovie" EntityType="Self.WatchListMovie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WatchListTv" EntityType="Self.WatchListTv" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Comment_Movie" Association="Self.FK_Comment_Movie">
+      <End Role="Movie" EntitySet="Movie" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnteranceLog_User" Association="Self.FK_EnteranceLog_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="EnteranceLog" EntitySet="EnteranceLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExceptionLog_User" Association="Self.FK_ExceptionLog_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ExceptionLog" EntitySet="ExceptionLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieCast_Actor" Association="Self.FK_MovieCast_Actor">
+      <End Role="Actor" EntitySet="Actor" />
+      <End Role="MovieCast" EntitySet="MovieCast" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieCast_Movie" Association="Self.FK_MovieCast_Movie">
+      <End Role="Movie" EntitySet="Movie" />
+      <End Role="MovieCast" EntitySet="MovieCast" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieCategory_Category" Association="Self.FK_MovieCategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="MovieCategory" EntitySet="MovieCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieCategory_Movie" Association="Self.FK_MovieCategory_Movie">
+      <End Role="Movie" EntitySet="Movie" />
+      <End Role="MovieCategory" EntitySet="MovieCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TvSeries_Category" Association="Self.FK_TvSeries_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Tv" EntitySet="Tv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TvSeriesCast_Actor" Association="Self.FK_TvSeriesCast_Actor">
+      <End Role="Actor" EntitySet="Actor" />
+      <End Role="TvCast" EntitySet="TvCast" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TvSeriesCast_TvSeries" Association="Self.FK_TvSeriesCast_TvSeries">
+      <End Role="Tv" EntitySet="Tv" />
+      <End Role="TvCast" EntitySet="TvCast" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserScoreForMovie_Movie" Association="Self.FK_UserScoreForMovie_Movie">
+      <End Role="Movie" EntitySet="Movie" />
+      <End Role="UserScoreForMovie" EntitySet="UserScoreForMovie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserScoreForMovie_User" Association="Self.FK_UserScoreForMovie_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserScoreForMovie" EntitySet="UserScoreForMovie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserScoreForTvSeries_TvSeries" Association="Self.FK_UserScoreForTvSeries_TvSeries">
+      <End Role="Tv" EntitySet="Tv" />
+      <End Role="UserScoreForTv" EntitySet="UserScoreForTv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserScoreForTvSeries_User" Association="Self.FK_UserScoreForTvSeries_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserScoreForTv" EntitySet="UserScoreForTv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchListMovie_Movie" Association="Self.FK_WatchListMovie_Movie">
+      <End Role="Movie" EntitySet="Movie" />
+      <End Role="WatchListMovie" EntitySet="WatchListMovie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchListMovie_User" Association="Self.FK_WatchListMovie_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="WatchListMovie" EntitySet="WatchListMovie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchListTvSeries_TvSeries" Association="Self.FK_WatchListTvSeries_TvSeries">
+      <End Role="Tv" EntitySet="Tv" />
+      <End Role="WatchListTv" EntitySet="WatchListTv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WatchListTvSeries_User" Association="Self.FK_WatchListTvSeries_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="WatchListTv" EntitySet="WatchListTv" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

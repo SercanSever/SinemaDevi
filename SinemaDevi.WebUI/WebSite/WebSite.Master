@@ -1,0 +1,301 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WebSite.master.cs" Inherits="SinemaDevi.WebUI.WebSite.WebSite" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title></title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../TemplateClient/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../TemplateClient/vendor/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="../TemplateClient/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="../TemplateClient/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../TemplateClient/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="../TemplateClient/vendor/venobox/venobox.css" rel="stylesheet" />
+
+
+    <!-- Template Main CSS File -->
+    <link href="../TemplateClient/css/style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        @import url(https://use.fontawesome.com/releases/v5.0.6/css/all.css);
+        @import url(https://fonts.googleapis.com/css?family=Oswald:400|Raleway:400,700,400italic,700italic);
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1d1f20;
+            color: #e5e5e5;
+            font: 16px/1.25 'Raleway', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            text-align: center;
+        }
+
+        a {
+            color: #a2ed56;
+        }
+
+            a:hover {
+                color: #83e4e2;
+                text-decoration: none;
+            }
+
+        .container {
+            margin: 0 auto;
+            max-width: 80em;
+        }
+
+        main .container {
+            padding: 1em;
+        }
+
+        p {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 40em;
+        }
+
+        .screen-reader-text {
+            clip: rect(1px 1px 1px 1px);
+            clip: rect(1px, 1px, 1px, 1px);
+            height: 1px;
+            overflow: hidden;
+            position: absolute !important;
+            width: 1px;
+        }
+
+
+
+        /************************************************/
+        /****************** NAVIGATION ******************/
+        /************************************************/
+        nav {
+            background: #e5e5e5;
+            color: #1d1f20;
+            left: 0;
+            position: relative;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+            /*** INPUT ***/
+            nav input {
+                opacity: 0;
+                position: absolute;
+                z-index: -1;
+            }
+
+            /*** LABEL ***/
+            nav label {
+                cursor: pointer;
+                display: block;
+                font: 2em/1 'Oswald', sans-serif;
+                padding: 0.5em;
+            }
+
+        /* Hamburger Icon */
+        #menu-icon,
+        #menu-icon:before,
+        #menu-icon:after {
+            background: #1d1f20;
+            border-radius: 0.05em;
+            height: 0.2em;
+            transition: all 0.2s ease-in-out;
+            width: 100%;
+        }
+
+        #menu-icon {
+            display: inline-block;
+            margin: 0.4em 0;
+            max-width: 1em;
+            position: relative;
+        }
+
+        nav label #menu-icon {
+            float: right;
+        }
+
+        #menu-icon:before,
+        #menu-icon:after {
+            content: '';
+            left: 0;
+            position: absolute;
+        }
+
+        #menu-icon:before {
+            top: -0.4em;
+        }
+
+        #menu-icon:after {
+            bottom: -0.4em;
+        }
+
+        /* Close Icon */
+        nav input[type=checkbox]:checked + label #menu-icon {
+            background: transparent;
+        }
+
+            nav input[type=checkbox]:checked + label #menu-icon:before {
+                top: 0;
+                transform: rotate(-45deg);
+            }
+
+            nav input[type=checkbox]:checked + label #menu-icon:after {
+                bottom: 0;
+                transform: rotate(45deg);
+            }
+
+
+        /*** MENU ***/
+        /* Overlay */
+        nav input:checked ~ #overlay {
+            background: #e5e5e5;
+            bottom: 0;
+            left: 0;
+            height: 70vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 100vw;
+            z-index: -1;
+            position: absolute;
+        }
+
+        /* List */
+        nav ul {
+            font-size: 1.5em;
+            list-style: none;
+            margin: 0;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav input:checked ~ ul {
+            margin: 1em;
+            max-height: inherit;
+            opacity: 1;
+        }
+
+        nav ul > li {
+            margin: 0.5em 0;
+        }
+
+        nav ul a {
+            color: #1d1f20 !important;
+            text-decoration: none;
+        }
+
+            nav ul a:hover {
+                text-decoration: underline;
+            }
+
+        /* Social Media */
+        nav ul#social-media > li {
+            display: inline-block;
+            font-size: 1.5em;
+            margin: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+
+        <nav style="opacity: 0.8;">
+            <div class="container">
+                
+                <input id="responsive-menu" type="checkbox">
+                <label for="responsive-menu">SinemaDevi <span id="menu-icon"></span><asp:Label ID="lblSessionUser" Text="" runat="server" Style="" /></label>
+                <div id="overlay"></div>
+                <ul>
+                    <li><a href="SinemaDevi.Home.aspx">Home</a></li>
+                    <li><a href="SinemaDevi.Movies.aspx">Movies</a></li>
+                    <li><a href="SinemaDevi.TvSeries.aspx">Tv Series</a></li>
+                    <li><a href="SinemaDevi.Actors.aspx">Actors</a></li>
+                    <li><a href="SinemaDevi.WatchList.aspx">Watch List</a></li>
+                    <li><a href="SinemaDevi.Contact.aspx">Contact</a></li>
+                    <li><a href="SinemaDevi.Login.aspx">Sign In</a></li>
+                    <li Id="logOutHide" style="visibility:hidden" runat="server"><a href="SinemaDevi.Login.aspx">
+                        <asp:LinkButton Text="Log Out" runat="server" OnClick="Unnamed_Click" /></a></li>
+                </ul>
+                <ul id="social-media">
+                    <li>
+                        <a href="https://twitter.com/">
+                            <i class="fab fa-twitter"></i>
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.instagram.com/">
+                            <i class="fab fa-instagram"></i>
+                            <span class="screen-reader-text">Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+    <script src="../TemplateClient/vendor/jquery/jquery.min.js"></script>
+    <script src="../TemplateClient/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../TemplateClient/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="../TemplateClient/vendor/php-email-form/validate.js"></script>
+    <script src="../TemplateClient/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="../TemplateClient/vendor/counterup/counterup.min.js"></script>
+    <script src="../TemplateClient/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="../TemplateClient/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../TemplateClient/vendor/venobox/venobox.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="../TemplateClient/js/main.js"></script>
+</body>
+</html>
